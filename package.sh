@@ -2,10 +2,10 @@
 ###
  # @Author: lqm283
  # @Date: 2021-03-25 10:57:17
- # @LastEditTime: 2021-09-19 15:19:29
+ # @LastEditTime: 2022-03-07 17:18:28
  # @LastEditors: lqm283
  # @Description: In User Settings Edit
- # @FilePath: /ubuntu/package.sh
+ # @FilePath: /rootfs_make/package.sh
 ###
 
 MAKE_DIR=$1

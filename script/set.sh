@@ -2,7 +2,7 @@
 ###
  # @Author: your name
  # @Date: 2021-03-25 11:38:19
- # @LastEditTime: 2022-03-07 08:18:44
+ # @LastEditTime: 2022-03-07 15:18:12
  # @LastEditors: lqm283
  # @Description: In User Settings Edit
  # @FilePath: /rootfs_make/script/set.sh
@@ -58,11 +58,11 @@ echo "PATH=$PATH:/usr/local/go/bin" >> /etc/profile
 echo auto eth0 > /etc/network/interfaces.d/eth0
 echo iface eth0 inet dhcp >> /etc/network/interfaces.d/eth0
 
-git clone https://gitee.com/mirrors/redis.git
-cd redis
-make -j
-make install
-cd ..
+# git clone https://gitee.com/mirrors/redis.git
+# cd redis
+# make -j
+# make install
+# cd ..
 
 #打开系统设置服务
 # ln -snf /lib/systemd/system/systemset.service /etc/systemd/system/multi-user.target.wants/systemset.service
@@ -75,8 +75,8 @@ systemctl enable  watchdog.service
 echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
 
 # 卸载临时应用
-apt remove  git gcc make
-apt autoremove
+echo y | apt remove  git gcc make
+echo y | apt autoremove
 
 #清除配置根文件系统时传入的临时文件
 rm -rf redis

@@ -2,10 +2,10 @@
 ###
  # @Author: lqm283
  # @Date: 2021-03-25 10:57:17
- # @LastEditTime: 2021-10-06 16:16:55
+ # @LastEditTime: 2022-03-07 17:18:45
  # @LastEditors: lqm283
  # @Description: In User Settings Edit
- # @FilePath: /ubuntu/mkfs.sh
+ # @FilePath: /rootfs_make/mkfs.sh
 ###
 
 MAKE_DIR=$1
@@ -88,7 +88,7 @@ cd ..
 
 
 # 创建ext4文件,根据根文件系统的大小分配ext4文件的大小。
-num=$(sudo du -sh $MAKE_DIR/ | cut -f1)
+num=$(sudo du -sm $MAKE_DIR/ | cut -f1)
 for var in $num
 do
   num=${var%M}
