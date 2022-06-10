@@ -44,10 +44,10 @@ tar -xvf ./download/$BASE_FILE -C $MAKE_DIR
 echo "Unzip complete..."
 echo ""
 
-QEMU=$(which qemu-arm-static) || { echo "E: You must have qemu-user-static package" && exit 1; }
+QEMU=$(which qemu-arm-static) || { echo y|apt update && echo y|apt upgrade && echo y|apt install qemu-user-static; }
 
 echo "Copy the qemu to rootfs building dir."
-sudo cp $QEMU $MAKE_DIR
+sudo cp $QEMU $MAKE_DIR/usr/bin
 echo "Copy over!"
 echo ""
 
