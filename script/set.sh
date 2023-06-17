@@ -48,28 +48,12 @@ echo "nameserver 8.8.4.4"  >> /etc/resolvconf/resolv.conf.d/head
 echo "nameserver 1.1.1.1"  >> /etc/resolvconf/resolv.conf.d/head
 echo "nameserver 202.103.225.68"  >> /etc/resolvconf/resolv.conf.d/head
 
-#设置串口终端
-# systemctl enable  getty@ttySTM0.service
-
 #设置go的路径
 echo "PATH=$PATH:/usr/local/go/bin" >> /etc/profile
 
 #配置DHCP
 echo auto eth0 > /etc/network/interfaces.d/eth0
 echo iface eth0 inet dhcp >> /etc/network/interfaces.d/eth0
-
-# git clone https://gitee.com/mirrors/redis.git
-# cd redis
-# make -j
-# make install
-# cd ..
-
-#打开系统设置服务
-# ln -snf /lib/systemd/system/systemset.service /etc/systemd/system/multi-user.target.wants/systemset.service
-# systemctl enable systemset.service
-
-#打开看门狗服务
-systemctl enable  watchdog.service
 
 #允许root用户远程登录
 echo "PermitRootLogin yes" >> /etc/ssh/sshd_config

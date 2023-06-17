@@ -44,7 +44,7 @@ tar -xvf ./download/$BASE_FILE -C $MAKE_DIR
 echo "Unzip complete..."
 echo ""
 
-QEMU=$(which qemu-arm-static) || { echo y|apt update && echo y|apt upgrade && echo y|apt install qemu-user-static; }
+QEMU=$(which qemu-aarch64-static) || { echo y|apt update && echo y|apt upgrade && echo y|apt install qemu-user-static; }
 
 echo "Copy the qemu to rootfs building dir."
 sudo cp $QEMU $MAKE_DIR/usr/bin
@@ -56,20 +56,6 @@ sed -i 's/ports\.ubuntu\.com/mirrors\.ustc\.edu\.cn/g' $MAKE_DIR/etc/apt/sources
 
 #复制本机的DNS配置文件到相应根文件系统目录
 cp /etc/resolv.conf $MAKE_DIR/etc/resolv.conf
-
-#安装go
-echo "installing go"
-# sudo tar -C $MAKE_DIR/usr/local -xzf go1.17.1.linux-armv6l.tar.gz
-
-#安装redis
-
-#加入关闭看门狗的执行脚本并添加可执行属性
-# sudo cp ./script/systemset.sh $MAKE_DIR/usr/bin/
-# sudo chmod +x $MAKE_DIR/usr/bin/systemset.sh
-
-#加入关闭看门狗的开机启动服务程序
-# sudo cp ./script/systemset.service $MAKE_DIR/lib/systemd/system/
-
 
 #挂载并切换到Ubuntu roofs
 sudo cp ./script/set.sh $MAKE_DIR/bin
